@@ -3,7 +3,7 @@ using namespace std;
 main(){
     int a =5;
 	int b =6;
-	cout<<"Pushing to github vikas"<<endl;
+	cout<<"The sum of two number is :"<<endl;
 
 	cout<<a+b<<endl;
 }
