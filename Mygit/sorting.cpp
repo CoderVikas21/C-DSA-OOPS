@@ -85,6 +85,46 @@ void merge_sort(int arr[] ,int s ,int e){
     merge(arr,s,e,mid);
 }
 
+int partition(int arr[] , int s, int e){
+    int p = arr[s];
+    int c=0;
+    for(int i=s;i<=e;i++){
+        if(arr[i]<arr[s]){
+            c++;
+        }
+    }
+    int pivotindex = s+c;
+    swap(arr[s],arr[pivotindex]);
+
+    int i=s;
+    int j=e;
+
+    while(i<pivotindex && j> pivotindex){
+        if(arr[i]>arr[pivotindex] && arr[j]<arr[pivotindex]){
+            swap(arr[i++],arr[j--]);
+        }
+        else if(arr[i]>arr[pivotindex]){
+            j--;
+        }
+        else if(arr[j]<arr[pivotindex]){
+            i++;
+        }
+        else{
+            i++; j--;
+        }
+    }
+    return pivotindex;
+}
+void quick_sort(int arr[], int s ,int e){
+    if(s>=e){
+        return;
+    }
+    int p = partition(arr,s,e);
+
+    quick_sort(arr,s,p-1);
+    quick_sort(arr,p+1,e);
+}
+
 main(){
     system("cls");
     int n=10;
@@ -95,7 +135,8 @@ main(){
     // selection_sort(arr,n);
     // bubble_sort(arr,n);
     // insertion_sort(arr,n);
-    // // merge_sort(arr,0,n-1);
+    // merge_sort(arr,0,n-1);
+    // quick_sort(arr,0,n-1);
 
     print(arr,n);
     
